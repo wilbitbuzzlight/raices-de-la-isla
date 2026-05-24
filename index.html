@@ -1221,10 +1221,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
       flex-shrink: 0;
       transition: background 0.2s;
     }
+    .contact-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--terra);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s;
+    }
+    .contact-item:hover .contact-icon svg { stroke: var(--dark); }
     .contact-item:hover .contact-icon { background: var(--gold); }
     .contact-item a {
       font-size: 15px;
@@ -1788,29 +1797,30 @@
           </p>
           <div class="contact-items">
             <div class="contact-item">
-              <div class="contact-icon">📧</div>
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
               <a href="mailto:raicesdelaisla.hc@gmail.com">raicesdelaisla.hc@gmail.com</a>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">📲</div>
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
               <a href="https://www.instagram.com/raicesdelaisla.hc" target="_blank">@raicesdelaisla.hc</a>
             </div>
           </div>
         </div>
         <div class="connect-cta reveal-right">
-          <h3>Ready to Make a Difference?</h3>
-          <p>Whether you're a nurse wanting to volunteer, a community organization looking to partner, or someone who wants to support our mission — we'd love to hear from you.</p>
-          <a href="mailto:raicesdelaisla.hc@gmail.com" class="btn-primary">
-            <span>📧</span> <span>Get in Touch</span>
-          </a>
+          <h3>Support the Mission</h3>
+          <p>Your time and generosity make a direct impact. Every donation and every volunteer hour helps bring free care to the communities that need it most.</p>
           <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="btn-donate-cta">
-            <span>♥</span> <span>Support Our Mission</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Donate</span>
           </a>
-          <div class="social-links">
-            <a href="https://www.instagram.com/raicesdelaisla.hc" target="_blank" class="social-link" title="Instagram">📸</a>
-            <a href="mailto:raicesdelaisla.hc@gmail.com" class="social-link" title="Email">✉️</a>
-            <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="social-link" title="Donate">♥</a>
-          </div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWkUukrPqKPtIr-NHC9Ead_KIp_SkfFgl3ZiEZG_wlanADg/viewform" target="_blank" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Volunteer With Us</span>
+          </a>
         </div>
       </div>
     </div>
