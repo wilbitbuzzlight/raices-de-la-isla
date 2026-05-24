@@ -193,6 +193,23 @@
     }
     .btn-donate-nav::after { display: none !important; }
 
+    .btn-volunteer-nav {
+      background: transparent;
+      color: var(--dark) !important;
+      border: 1.5px solid rgba(44, 35, 23, 0.3);
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .btn-volunteer-nav:hover {
+      border-color: var(--terra);
+      color: var(--terra) !important;
+      transform: translateY(-2px);
+    }
+    .btn-volunteer-nav::after { display: none !important; }
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -1463,6 +1480,7 @@
           <li><a href="#what-we-do">What We Do</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#connect">Connect</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWkUukrPqKPtIr-NHC9Ead_KIp_SkfFgl3ZiEZG_wlanADg/viewform" target="_blank" class="btn-volunteer-nav">Volunteer</a></li>
           <li><a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="btn-donate-nav">♥ Donate</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
@@ -1833,7 +1851,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="assets/images/logo.png" alt="Raíces de la Isla Logo" />
-          <p>A nurse-led nonprofit dedicated to advancing health equity in underserved communities across New York City. Rooted in heritage, committed to health.</p>
+          <p>A nurse-led 501(c)(3) nonprofit organization dedicated to advancing health equity in underserved communities across New York City. Rooted in heritage, committed to health.</p>
           <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="footer-donate">♥ Donate Now</a>
         </div>
         <div class="footer-col">
@@ -1846,18 +1864,20 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Our Work</h4>
+          <h4>Get Involved</h4>
           <ul>
-            <li><a href="#what-we-do">Health Screenings</a></li>
-            <li><a href="#what-we-do">Health Fairs</a></li>
-            <li><a href="#what-we-do">Health Education</a></li>
-            <li><a href="#what-we-do">School Programs</a></li>
-            <li><a href="#what-we-do">Community Partnerships</a></li>
+            <li><a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank">♥ Donate</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWkUukrPqKPtIr-NHC9Ead_KIp_SkfFgl3ZiEZG_wlanADg/viewform" target="_blank">Volunteer</a></li>
+            <li><a href="mailto:raicesdelaisla.hc@gmail.com">Contact Us</a></li>
+            <li><a href="https://www.instagram.com/raicesdelaisla.hc" target="_blank">Instagram</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Raíces de la Isla Health Collective. All rights reserved.</p>
+        <p>© 2026 Raíces de la Isla Health Collective. All rights reserved.
+          &nbsp;&middot;&nbsp; <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy Policy</a>
+          &nbsp;&middot;&nbsp; <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms of Use</a>
+        </p>
         <p class="footer-tagline">"Rooted in Heritage, Committed to Health."</p>
       </div>
     </div>
