@@ -925,6 +925,109 @@
 
     /* ===== EVENT SECTION ===== */
     .events { background: var(--cream); }
+
+    /* Event status badge */
+    .event-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .event-status::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .event-status.past {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.65);
+    }
+    .event-status.past::before { background: rgba(255,255,255,0.4); }
+    .event-status.upcoming {
+      background: rgba(212,162,50,0.2);
+      border: 1px solid rgba(212,162,50,0.4);
+      color: var(--gold-light);
+    }
+    .event-status.upcoming::before { background: var(--gold); animation: pulse-border 2s infinite; }
+
+    /* Events subheader */
+    .events-header { margin-bottom: 40px; }
+    .events-subhead {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Event CTAs row */
+    .event-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-event-secondary {
+      background: transparent;
+      color: var(--terra);
+      border: 1.5px solid rgba(139,58,26,0.3);
+    }
+    .btn-event-secondary:hover {
+      background: rgba(139,58,26,0.06);
+      border-color: var(--terra);
+      transform: translateY(-2px);
+      box-shadow: none;
+    }
+
+    /* Events coming-soon row */
+    .events-next {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid rgba(44,35,23,0.08);
+      border-radius: 16px;
+      padding: 24px 32px;
+    }
+    .events-next-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .events-next-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .events-next-icon svg { width: 20px; height: 20px; stroke: var(--terra); }
+    .events-next-text { flex: 1; min-width: 200px; }
+    .events-next-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .events-next-text p { font-size: 14px; color: var(--text-muted); }
+    .btn-events-follow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terra);
+      color: var(--white);
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-events-follow:hover {
+      background: var(--terra-light);
+      transform: translateY(-2px);
+    }
+
     .event-card {
       background: var(--white);
       border-radius: 24px;
@@ -943,11 +1046,22 @@
       overflow: hidden;
     }
     .event-visual::before {
-      content: '🥂';
+      content: '';
       position: absolute;
-      top: 24px; right: 24px;
-      font-size: 80px;
-      opacity: 0.2;
+      top: -30px; right: -30px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      pointer-events: none;
+    }
+    .event-visual::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: -20px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
     }
     .event-date-badge {
       display: inline-flex;
@@ -1406,13 +1520,16 @@
     </div>
   </section>
 
-  <!-- ===== DONATE BANNER ===== -->
+  <!-- ===== ANNOUNCEMENTS BAR ===== -->
   <div class="donate-banner">
     <div class="container">
       <div class="donate-banner-inner">
-        <p>🎉 <strong>Nurses Brunch Coming Up!</strong> <span>Support our nurses and the communities they serve.</span></p>
-        <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="btn-donate-banner">
-          ♥ Give Now
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:8px;"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg>
+          <strong>Raíces de la Isla</strong> <span>Stay connected — see our latest events and community announcements.</span>
+        </p>
+        <a href="#events" class="btn-donate-banner">
+          See Events &nbsp;→
         </a>
       </div>
     </div>
@@ -1591,34 +1708,57 @@
   <!-- ===== EVENTS ===== -->
   <section class="events section" id="events">
     <div class="container">
-      <div class="reveal">
-        <div class="section-label">Current Events</div>
-        <h2 class="section-title" style="margin-bottom:40px;">Join Us</h2>
+      <div class="events-header reveal">
+        <div class="section-label">Events</div>
+        <h2 class="section-title">What's Happening</h2>
+        <p class="events-subhead">Join us at our events and community gatherings across New York City.</p>
       </div>
+
+      <!-- Featured Event -->
       <div class="event-card reveal">
         <div class="event-visual">
+          <div class="event-status past">Past Event</div>
           <div class="event-date-badge">
-            <span class="month">Coming Soon</span>
-            <span class="day">🥂</span>
+            <span class="month">May 2026</span>
+            <span class="day" style="font-size:32px;line-height:1.2;">Nurses<br/>Brunch</span>
           </div>
-          <h3>Nurses Brunch</h3>
-          <p>A celebration of the nurses at the heart of our mission — and the communities they serve. Join us for an inspiring event bringing together healthcare advocates, community partners, and supporters.</p>
+          <h3>A Celebration of Our Nurses</h3>
+          <p>A heartfelt gathering of healthcare advocates, community partners, and supporters honoring the nurses behind Raíces de la Isla.</p>
         </div>
         <div class="event-info">
           <div class="section-label">Featured Event</div>
-          <h2>Support the Nurses Brunch</h2>
+          <h2>Nurses Brunch</h2>
           <p>
-            Our nurses work tirelessly to bring healthcare to every corner of our community. The Nurses Brunch is a celebration of that dedication — and an opportunity to fuel our mission forward.
+            Our inaugural Nurses Brunch was a celebration of the dedicated nurses at the heart of our mission. Thank you to everyone who joined us and made it possible.
             <br /><br />
-            Your contribution helps us continue offering free screenings, health education, and community outreach to those who need it most.
+            Photos and highlights from the event are coming soon. Stay connected for updates on our next gathering.
           </p>
-          <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="btn-event">
-            <span>♥</span>
-            <span>Donate via GiveButter</span>
-            <span>→</span>
+          <div class="event-ctas">
+            <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="btn-event btn-event-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>View Event Page</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- More Events Row -->
+      <div class="events-next reveal">
+        <div class="events-next-inner">
+          <div class="events-next-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="events-next-text">
+            <h4>More Events Coming Soon</h4>
+            <p>Follow us on Instagram for the latest announcements on upcoming events and community gatherings.</p>
+          </div>
+          <a href="https://www.instagram.com/raicesdelaisla.hc" target="_blank" class="btn-events-follow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Follow Us
           </a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -1815,9 +1955,6 @@
         title: 'Fundraising Events',
         images: [
           { src: 'assets/images/nurse-screening.jpeg', caption: 'Health Screening Event' },
-          { src: 'assets/images/ig1.png', caption: 'Community Event' },
-          { src: 'assets/images/ig2.png', caption: 'Fundraising' },
-          { src: 'assets/images/ig3.png', caption: 'Event Highlights' },
         ]
       }
     };
