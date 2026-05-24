@@ -597,98 +597,151 @@
     .wwd-header .section-label::before { background: var(--gold); }
     .wwd-header .section-title { color: var(--white); }
 
-    /* Media showcase */
-    .media-showcase {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 24px;
-      margin-bottom: 64px;
+    /* ===== WORK CAROUSEL ===== */
+    .work-carousel-wrap { margin-bottom: 48px; }
+    .carousel-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 4px 20px;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
     }
-    .media-main {
+    .carousel-scroll::-webkit-scrollbar { display: none; }
+    .carousel-scroll.dragging { cursor: grabbing; }
+    .carousel-card {
+      flex: 0 0 360px;
+      height: 460px;
       border-radius: 20px;
       overflow: hidden;
       position: relative;
-      height: 400px;
-      background: #1a1208;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    .media-main img {
+    .carousel-card:hover { transform: translateY(-6px); }
+    .carousel-card img {
       width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
-    .media-main:hover img { transform: scale(1.04); }
-    .media-caption {
+    .carousel-card:hover img { transform: scale(1.04); }
+    .carousel-overlay {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 24px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: var(--white);
+      inset: 0;
+      background: linear-gradient(transparent 30%, rgba(8,4,2,0.88) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 24px;
     }
-    .media-caption h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-    .media-caption p {
-      font-size: 13px;
-      opacity: 0.75;
-    }
-    .media-grid-right {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 24px;
-    }
-    .media-thumb {
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      background: #1a1208;
-    }
-    .media-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    .media-thumb:hover img { transform: scale(1.05); }
-    .media-thumb .media-caption { padding: 16px; }
-    .media-thumb .media-caption h4 { font-size: 15px; }
-
-    /* Video section */
-    .video-block {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 32px;
-      margin-bottom: 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+    .carousel-tag {
+      display: inline-flex;
       align-items: center;
+      gap: 6px;
+      background: rgba(212,162,50,0.2);
+      border: 1px solid rgba(212,162,50,0.4);
+      color: var(--gold-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      width: fit-content;
     }
-    .video-wrap {
-      border-radius: 14px;
-      overflow: hidden;
-      background: #000;
+    .carousel-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
     }
-    .video-wrap video {
-      width: 100%;
-      border-radius: 14px;
-      display: block;
+    .carousel-overlay p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
     }
-    .video-info .section-label { color: var(--sky); }
-    .video-info .section-label::before { background: var(--sky); }
-    .video-info h3 {
+    .carousel-hint {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* Volunteer CTA in WWD */
+    .wwd-volunteer-cta {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 72px;
+    }
+    .btn-volunteer-wwd {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.25s;
+    }
+    .btn-volunteer-wwd:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .btn-volunteer-wwd svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Health Education subsection */
+    .health-edu-section {
+      margin-bottom: 72px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      padding: 40px;
+    }
+    .health-edu-header { margin-bottom: 28px; }
+    .health-edu-header .section-label { color: var(--sky); }
+    .health-edu-header .section-label::before { background: var(--sky); }
+    .health-edu-header h3 {
       font-family: 'Playfair Display', serif;
       font-size: 26px;
       color: var(--white);
-      margin-bottom: 16px;
-      line-height: 1.3;
+      margin: 8px 0 6px;
     }
-    .video-info p {
-      color: rgba(255,255,255,0.6);
+    .health-edu-header p {
       font-size: 15px;
-      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
     }
+    .edu-videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .edu-video-card {
+      background: rgba(0,0,0,0.4);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .edu-video-card video { width: 100%; display: block; max-height: 280px; object-fit: cover; }
+    .edu-video-caption { padding: 16px 20px; }
+    .edu-video-caption h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .edu-video-caption p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
     /* Services cards */
     .services-grid {
@@ -721,9 +774,22 @@
     }
     .service-card:hover::before { transform: scaleX(1); }
     .service-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
-      display: block;
+      width: 48px; height: 48px;
+      background: rgba(212,162,50,0.12);
+      border: 1px solid rgba(212,162,50,0.22);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     .service-card h3 {
       font-family: 'Playfair Display', serif;
@@ -736,6 +802,124 @@
       color: rgba(255,255,255,0.55);
       line-height: 1.7;
     }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lb-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.94);
+    }
+    .lb-panel {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 20px;
+      display: flex;
+      flex-direction: column;
+      max-height: 92vh;
+    }
+    .lb-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 12px;
+      flex-shrink: 0;
+    }
+    .lb-top h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--white);
+    }
+    .lb-close {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--white);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.2); }
+    .lb-main-wrap {
+      flex: 1;
+      min-height: 0;
+      background: rgba(0,0,0,0.5);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    #lbMainImg {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: var(--white);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .lb-nav:hover { background: rgba(212,162,50,0.5); }
+    .lb-prev { left: 12px; }
+    .lb-next { right: 12px; }
+    .lb-counter {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      padding: 10px 0 6px;
+      flex-shrink: 0;
+    }
+    .lb-thumbs-wrap {
+      flex-shrink: 0;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 16px;
+    }
+    .lb-thumbs-wrap::-webkit-scrollbar { display: none; }
+    .lb-thumb {
+      flex-shrink: 0;
+      width: 68px; height: 50px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.55;
+      transition: all 0.2s;
+    }
+    .lb-thumb.active { border-color: var(--gold); opacity: 1; }
+    .lb-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
 
 
@@ -1111,10 +1295,9 @@
       .hero-visual { display: flex; justify-content: center; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-photo-stack { height: 420px; }
-      .media-showcase { grid-template-columns: 1fr; }
-      .media-main { height: 280px; }
-      .media-grid-right { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .carousel-card { flex: 0 0 300px; height: 400px; }
       .services-grid { grid-template-columns: 1fr 1fr; }
+      .health-edu-section { padding: 28px; }
       .photo-grid { grid-template-columns: 1fr 1fr; }
       .photo-item:nth-child(1) { grid-row: span 1; }
       .event-card { grid-template-columns: 1fr; }
@@ -1122,13 +1305,14 @@
       .event-info { padding: 40px 32px; }
       .connect-grid { grid-template-columns: 1fr; gap: 48px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .video-block { grid-template-columns: 1fr; }
       .navbar-links { display: none; }
       .hamburger { display: flex; }
     }
     @media (max-width: 640px) {
       .section { padding: 56px 0; }
+      .carousel-card { flex: 0 0 280px; height: 360px; }
       .services-grid { grid-template-columns: 1fr; }
+      .health-edu-section { padding: 20px; }
       .photo-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .about-photo-stack { height: 360px; }
@@ -1189,8 +1373,8 @@
             A nurse-led 501(c)(3) nonprofit advancing health equity in underserved communities across New York City — through free screenings, deep community roots, preventative care initiatives, and health education.
           </p>
           <div class="hero-ctas">
-            <a href="#what-we-do" class="btn-outline">
-              <span>Our Work</span> <span>↓</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWkUukrPqKPtIr-NHC9Ead_KIp_SkfFgl3ZiEZG_wlanADg/viewform" target="_blank" class="btn-outline">
+              <span>Volunteer</span> <span>→</span>
             </a>
             <a href="https://givebutter.com/nurses-brunch-qhhrft" target="_blank" class="btn-primary">
               <span>♥</span> <span>Donate</span>
@@ -1288,85 +1472,120 @@
         </h2>
       </div>
 
-      <!-- Photo Showcase -->
-      <div class="media-showcase reveal">
-        <div class="media-main">
-          <img src="assets/images/fair5.jpeg" alt="Community health fair outreach" loading="lazy" />
-          <div class="media-caption">
-            <h4>Community Outreach & Health Fairs</h4>
-            <p>Bringing resources, education, and support directly to where people are</p>
+      <!-- Photo Carousel -->
+      <div class="work-carousel-wrap reveal">
+        <div class="carousel-scroll" id="carouselScroll">
+          <div class="carousel-card" onclick="openGallery('outreach')">
+            <img src="assets/images/fair5.jpeg" alt="Community Outreach" loading="lazy" />
+            <div class="carousel-overlay">
+              <div class="carousel-tag">Tap to explore ↗</div>
+              <h3>Community Outreach &amp; Health Fairs</h3>
+              <p>Bringing resources, education, and support directly to where people are</p>
+            </div>
           </div>
-        </div>
-        <div class="media-grid-right">
-          <div class="media-thumb">
-            <img src="assets/images/school1.jpeg" alt="School health education" loading="lazy" />
-            <div class="media-caption">
-              <h4>School-Based Education</h4>
+          <div class="carousel-card" onclick="openGallery('school')">
+            <img src="assets/images/school1.jpeg" alt="School Based Education" loading="lazy" />
+            <div class="carousel-overlay">
+              <div class="carousel-tag">Tap to explore ↗</div>
+              <h3>School-Based Education</h3>
               <p>Empowering the next generation with health knowledge</p>
             </div>
           </div>
-          <div class="media-thumb">
-            <img src="assets/images/fair3.jpeg" alt="Health screenings" loading="lazy" />
-            <div class="media-caption">
-              <h4>Free Blood Pressure Screenings</h4>
-              <p>Early detection saves lives</p>
+          <div class="carousel-card" onclick="openGallery('fundraising')">
+            <img src="assets/images/nurse-screening.jpeg" alt="Fundraising Events" loading="lazy" />
+            <div class="carousel-overlay">
+              <div class="carousel-tag">Tap to explore ↗</div>
+              <h3>Fundraising Events</h3>
+              <p>Building the resources to serve our communities</p>
             </div>
           </div>
         </div>
+        <p class="carousel-hint">← Scroll to explore →</p>
       </div>
 
-      <!-- Video Block -->
-      <div class="video-block reveal">
-        <div class="video-wrap">
-          <video controls preload="metadata" poster="assets/images/fair4.jpeg">
-            <source src="assets/videos/pneumonia-edu.mov" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-info">
+      <!-- Volunteer CTA -->
+      <div class="wwd-volunteer-cta reveal">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWkUukrPqKPtIr-NHC9Ead_KIp_SkfFgl3ZiEZG_wlanADg/viewform" target="_blank" class="btn-volunteer-wwd">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Volunteer With Us</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Health Education Subsection -->
+      <div class="health-edu-section reveal">
+        <div class="health-edu-header">
           <div class="section-label">Health Education</div>
-          <h3>Understanding Pneumonia: What You Need to Know</h3>
-          <p>
-            Our nurses deliver accessible, culturally aware health education directly to our communities. This educational session covers pneumonia — its causes, symptoms, prevention, and when to seek care — empowering individuals to make informed health decisions.
-          </p>
+          <h3>Educating Our Communities</h3>
+          <p>Accessible, culturally aware health education delivered directly to the people we serve.</p>
+        </div>
+        <div class="edu-videos-grid">
+          <div class="edu-video-card">
+            <video controls preload="metadata" poster="assets/images/fair4.jpeg" playsinline>
+              <source src="assets/videos/pneumonia-edu.mov" type="video/mp4" />
+              <source src="assets/videos/pneumonia-edu.mov" type="video/quicktime" />
+            </video>
+            <div class="edu-video-caption">
+              <h4>Understanding Pneumonia: What You Need to Know</h4>
+              <p>Causes, symptoms, prevention, and when to seek care — empowering communities to make informed health decisions.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Services Grid -->
       <div class="services-grid">
         <div class="service-card reveal">
-          <span class="service-icon">🩺</span>
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
           <h3>Community Health Screenings</h3>
           <p>Free blood pressure screenings at community events, helping individuals identify potential health risks early.</p>
         </div>
         <div class="service-card reveal">
-          <span class="service-icon">🌆</span>
-          <h3>Community Outreach & Health Fairs</h3>
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Community Outreach &amp; Health Fairs</h3>
           <p>Organizing and participating in health fairs and outreach initiatives, bringing resources and support directly to the people who need them.</p>
         </div>
         <div class="service-card reveal">
-          <span class="service-icon">📚</span>
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
           <h3>Health Education</h3>
           <p>Education on chronic disease prevention, wellness, and healthy lifestyle practices — equipping communities with the tools to make informed decisions.</p>
         </div>
         <div class="service-card reveal">
-          <span class="service-icon">🏫</span>
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="7 9.5 7 16"/><path d="M17 9.5v3a5 5 0 0 1-10 0V9.5"/></svg></div>
           <h3>School-Based Education</h3>
           <p>Engaging students through educational sessions in schools, promoting early awareness of health and preventative care for long-term wellness.</p>
         </div>
         <div class="service-card reveal">
-          <span class="service-icon">🤝</span>
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></div>
           <h3>Community Partnerships</h3>
           <p>Collaborating with local organizations, shelters, and community leaders to expand access to care and strengthen our collective impact.</p>
         </div>
         <div class="service-card reveal">
-          <span class="service-icon">🌱</span>
+          <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
           <h3>Future Initiatives</h3>
           <p>Developing health kits with essential wellness supplies and expanding our services to reach more communities across New York City.</p>
         </div>
-      </div>
+      </div>      </div>
     </div>
   </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <div class="lb-backdrop" onclick="closeLightbox()"></div>
+    <div class="lb-panel">
+      <div class="lb-top">
+        <h3 id="lbTitle"></h3>
+        <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
+      </div>
+      <div class="lb-main-wrap">
+        <img id="lbMainImg" src="" alt="" />
+        <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#x2039;</button>
+        <button class="lb-nav lb-next" onclick="lbNav(1)">&#x203a;</button>
+      </div>
+      <div class="lb-counter" id="lbCounter"></div>
+      <div class="lb-thumbs-wrap" id="lbThumbs"></div>
+    </div>
+  </div>
 
 
   <!-- ===== EVENTS ===== -->
@@ -1568,6 +1787,113 @@
         }
       });
     });
+
+    // ===== GALLERY DATA =====
+    const galleries = {
+      outreach: {
+        title: 'Community Outreach & Health Fairs',
+        images: [
+          { src: 'assets/images/fair5.jpeg', caption: 'Community Health Fair' },
+          { src: 'assets/images/fair1.jpeg', caption: 'Community Outreach Event' },
+          { src: 'assets/images/fair2.jpeg', caption: 'Health Screenings' },
+          { src: 'assets/images/fair3.jpeg', caption: 'Free Services' },
+          { src: 'assets/images/fair4.jpeg', caption: 'Community Health Fair' },
+          { src: 'assets/images/fair6.jpeg', caption: 'Health Fair Outreach' },
+          { src: 'assets/images/team1.jpeg', caption: 'Raíces Team — Northwell Health Event' },
+          { src: 'assets/images/sf-fair1.png', caption: 'Street Fair' },
+          { src: 'assets/images/sf-fair2.png', caption: 'Street Fair Outreach' },
+        ]
+      },
+      school: {
+        title: 'School-Based Education',
+        images: [
+          { src: 'assets/images/school1.jpeg', caption: 'School Health Education' },
+          { src: 'assets/images/school2.jpeg', caption: 'Student Engagement' },
+        ]
+      },
+      fundraising: {
+        title: 'Fundraising Events',
+        images: [
+          { src: 'assets/images/nurse-screening.jpeg', caption: 'Health Screening Event' },
+          { src: 'assets/images/ig1.png', caption: 'Community Event' },
+          { src: 'assets/images/ig2.png', caption: 'Fundraising' },
+          { src: 'assets/images/ig3.png', caption: 'Event Highlights' },
+        ]
+      }
+    };
+
+    // ===== LIGHTBOX =====
+    let lbCurrent = 0;
+    let lbImages = [];
+
+    function openGallery(key) {
+      const gallery = galleries[key];
+      if (!gallery) return;
+      lbImages = gallery.images;
+      lbCurrent = 0;
+      document.getElementById('lbTitle').textContent = gallery.title;
+      renderLbThumbs();
+      setLbImage(0);
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function setLbImage(idx) {
+      lbCurrent = Math.max(0, Math.min(idx, lbImages.length - 1));
+      document.getElementById('lbMainImg').src = lbImages[lbCurrent].src;
+      document.getElementById('lbMainImg').alt = lbImages[lbCurrent].caption || '';
+      document.getElementById('lbCounter').textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
+      document.querySelectorAll('.lb-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === lbCurrent);
+      });
+      // scroll active thumb into view
+      const activeThumb = document.querySelectorAll('.lb-thumb')[lbCurrent];
+      if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    function renderLbThumbs() {
+      const wrap = document.getElementById('lbThumbs');
+      wrap.innerHTML = lbImages.map((img, i) =>
+        `<div class="lb-thumb${i === 0 ? ' active' : ''}" onclick="setLbImage(${i})">
+          <img src="${img.src}" alt="${img.caption || ''}" loading="lazy" />
+        </div>`
+      ).join('');
+    }
+
+    function lbNav(dir) { setLbImage(lbCurrent + dir); }
+
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ===== CAROUSEL DRAG SCROLL =====
+    const carousel = document.getElementById('carouselScroll');
+    if (carousel) {
+      let isDown = false, startX, scrollLeft;
+      carousel.addEventListener('mousedown', e => {
+        isDown = true;
+        carousel.classList.add('dragging');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+      carousel.addEventListener('mouseleave', () => { isDown = false; carousel.classList.remove('dragging'); });
+      carousel.addEventListener('mouseup', () => { isDown = false; carousel.classList.remove('dragging'); });
+      carousel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        carousel.scrollLeft = scrollLeft - (x - startX) * 1.2;
+      });
+    }
   </script>
 </body>
 </html>
